@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="{% static 'styles/style.css' %}"
+    />
+    <title>Document</title>
+    <script>
+      const gameSet = {
+        duration: {{ duration }},
+        questions: {{ questions|safe }},
+      };
+    </script>
+  </head>
+  <body id="gametime">
+    <div class="container">
+      <div class="game-details">
+        <div class="count-down">
+          <span class="title">Seconds Left: </span>
+          <span class="seconds-left">0</span>
+        </div>
+        <div class="score">
+          <span class="title">Score: </span>
+          <span class="score-number">0</span>
+        </div>
+      </div>
+      <div class="question">
+        <div class="prompt">85 + 85</div>
+        <span class="equal-sign">=</span>
+        <input type="number" class="answer" autofocus />
+        <div class="final-score">10</div>
+      </div>
+      <div class="end-game">
+        <div>
+          <button class="btn" id="try-again" type="submit">Try Again</button>
+        </div>
+        <div>
+          <form action="/arithmetic-game/gamesettings" method="get">
+            <button class="btn" id="try-again" type="submit">Reset Numbers</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'scripts/gametimeScript.js' %}"></script>
+  </body>
+</html>
